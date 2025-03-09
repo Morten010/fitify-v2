@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background text-white;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+.title-font {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@layer base {
+    :root {
+      --background: 207, 16%, 13%;
+      --foreground: 0, 0%, 100%;
+    
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+    
+      --popover: 0 0% 100%;
+      --popover-foreground: 240 10% 3.9%;
+    
+      --primary: 68 99% 53%;
+      --primary-foreground: 207, 16%, 13%;
+    
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+    
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 46.1%;
+    
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+    
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 0 0% 98%;
+    
+      --border:213 11% 19%;
+      --input:213 11% 19%;
+      --ring:69 80% 10%;
+      --radius: 0.5rem;
+    }
+     
+    /* .dark {
+      --background:207 16% 13%;
+      --foreground:0 0% 98%;
+    
+      --card:240 10% 3.9%;
+      --card-foreground:0 0% 98%;
+    
+      --popover:240 10% 3.9%;
+      --popover-foreground:0 0% 98%;
+    
+      --primary:0 0% 98%;
+      --primary-foreground:240 5.9% 10%;
+    
+      --secondary:240 3.7% 15.9%;
+      --secondary-foreground:0 0% 98%;
+    
+      --muted:240 3.7% 15.9%;
+      --muted-foreground:240 5% 64.9%;
+    
+      --accent:240 3.7% 15.9%;
+      --accent-foreground:0 0% 98%;
+    
+      --destructive:0 62.8% 30.6%;
+      --destructive-foreground:0 0% 98%;
+    
+      --border:240 3.7% 15.9%;
+      --input:240 3.7% 15.9%;
+      --ring:240 4.9% 83.9%;
+    } */
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid hsl(68 99% 15%);
+    -webkit-text-fill-color: hsl(68, 99%, 43%);
+    -webkit-box-shadow: 0 0 0px 1000px hsl(213 11% 19%) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
