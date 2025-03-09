@@ -7,10 +7,16 @@ const links = [
     href: "/",
     icon: "heroicons:squares-2x2-solid",
   },
+  // share workout recipes and other social stuff under public
   {
-    title: "Something",
-    href: "/something",
-    icon: "heroicons-solid:plus-circle",
+    title: "Public",
+    href: "/public",
+    icon: "iconoir:globe",
+  },
+  {
+    title: "Search",
+    href: "/search",
+    icon: "wpf:search",
   },
   {
     title: "Food tracking",
@@ -29,7 +35,7 @@ const isActivePath = (path: string) => route.path === path;
 
 <template>
   <nav
-    class="fixed bottom-0 left-0 py-5 px-10 bg-background/50 backdrop-blur-md border-t border-border w-full flex justify-between text-[#a1a0a3]">
+    class="fixed bottom-0 left-0 p-5 bg-background/50 backdrop-blur-md border-t border-border w-full flex justify-between text-[#a1a0a3]">
     <NuxtLink
       class="relative flex"
       v-for="link in links"

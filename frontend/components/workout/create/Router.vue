@@ -10,9 +10,11 @@ const { page, workout } = defineProps({
   },
 });
 
-const workoutPage = computed(() => {
-  return workout.workoutDays[page.index];
-});
+const deleteWorkout = () => {
+  page["type"] = "information";
+  page["index"] = 0;
+  workout.workoutDays.splice(page.index, 1);
+};
 </script>
 
 <template>
@@ -23,6 +25,7 @@ const workoutPage = computed(() => {
       v-if="page.type === 'information'" />
     <CreateWorkoutDayPage
       v-if="page.type === 'day'"
-      :workout="workout.workoutDays[page.index]" />
+      :workout="workout.workoutDays[page.index]"
+      @delete="deleteWorkout" />
   </div>
 </template>

@@ -19,11 +19,11 @@ body {
 
 @layer base {
     :root {
-      --background: 207, 16%, 13%;
-      --foreground: 0, 0%, 100%;
+      --background: 207 16% 13%;
+      --foreground: 0 0% 100%;
     
-      --card: 0 0% 100%;
-      --card-foreground: 240 10% 3.9%;
+      --card: 207 16% 15%;
+      --card-foreground: 0 0% 100%;
     
       --popover: 0 0% 100%;
       --popover-foreground: 240 10% 3.9%;
@@ -31,8 +31,8 @@ body {
       --primary: 68 99% 53%;
       --primary-foreground: 207, 16%, 13%;
     
-      --secondary: 240 4.8% 95.9%;
-      --secondary-foreground: 240 5.9% 10%;
+      --secondary: 206 9% 29%;
+      --secondary-foreground:  240 4.8% 95.9%;
     
       --muted: 240 4.8% 95.9%;
       --muted-foreground: 240 3.8% 46.1%;
@@ -45,7 +45,7 @@ body {
     
       --border:213 11% 19%;
       --input:213 11% 19%;
-      --ring:69 80% 10%;
+      --ring:213 11% 19%;
       --radius: 0rem;
     }
      
@@ -89,8 +89,8 @@ body {
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid hsl(68 99% 15%);
-    -webkit-text-fill-color: hsl(68, 99%, 43%);
+    border: 0.5px solid hsl(213 11% 19%);
+    -webkit-text-fill-color: hsl(213 11% 19%);
     -webkit-box-shadow: 0 0 0px 1000px hsl(213 11% 19%) inset;
     transition: background-color 5000s ease-in-out 0s;
   }

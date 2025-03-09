@@ -19,7 +19,9 @@ const { workout } = defineProps({
     </Label>
     <Label class="flex flex-col gap-2">
       Description
-      <Textarea v-model="workout.description" placeholder="..." />
+      <Textarea
+        v-model="workout.description"
+        placeholder="This workout is..." />
     </Label>
   </div>
 </template>

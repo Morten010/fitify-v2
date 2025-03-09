@@ -18,7 +18,13 @@ const handleSignout = async () => {
   </div>
   <ul>
     <li
-      class="p-5 mt-2 border-y border-border flex text-red-600 text-xl items-center gap-5 font-medium hover:bg-red-700 hover:text-white transition-all duration-300 cursor-pointer"
+      class="p-5 mt-2 border-t border-border flex text-xl items-center gap-5 font-medium hover:bg-primary hover:text-background transition-all duration-300 cursor-pointer"
+      @click="handleSignout">
+      <Icon size="35" name="icon-park-outline:logout" />
+      Profile settings
+    </li>
+    <li
+      class="p-5 border-y border-border flex text-red-600 text-xl items-center gap-5 font-medium hover:bg-red-700 hover:text-white transition-all duration-300 cursor-pointer"
       @click="handleSignout">
       <Icon size="35" name="icon-park-outline:logout" />
       Logout

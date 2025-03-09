@@ -16,13 +16,24 @@ const handleAddWorkoutDay = () => {
 </script>
 
 <template>
+  <!-- loading screen -->
+  <div
+    v-if="false"
+    class="absolute top-0 left-0 w-full h-full bg-background/90 backdrop-blur-md z-30 flex justify-center items-center">
+    <h3 class="text-lg">Creating workout...</h3>
+  </div>
+  <!-- loading screen -->
+
   <!-- top navigation -->
   <div
-    class="sticky top-0 border-b border-border flex justify-between items-center">
-    <Button class="!h-14 !w-14" size="icon" @click="$router.back()">
-      <Icon size="30" name="lets-icons:back" />
-    </Button>
-    <h1 class="title-font text-3xl pr-5">Create workout</h1>
+    class="sticky top-0 border-b border-border flex justify-between items-center bg-background/95 backdrop-blur-md z-20">
+    <div class="flex items-center gap-3">
+      <Button class="!h-14 !w-14" size="icon" @click="$router.back()">
+        <Icon size="30" name="lets-icons:back" />
+      </Button>
+      <h1 class="title-font text-3xl mt-1">Create workout</h1>
+    </div>
+    <Button variant="secondary" class="h-14 px-6"> Finish workout </Button>
   </div>
   <!-- top navigation -->
 
@@ -31,8 +42,9 @@ const handleAddWorkoutDay = () => {
   <!-- page -->
 
   <!-- workout navigation -->
+  <div class="mb-12" />
   <div
-    class="flex border-y border-border fixed bottom-0 left-0 w-full overflow-auto max-w-screen max-sm:hide-scrollbar">
+    class="flex border-y border-border fixed bottom-0 left-0 w-full overflow-auto max-w-screen max-sm:hide-scrollbar bg-background/95 backdrop-blur-md">
     <button
       class="p-4 border-r border-border sticky left-0"
       :class="{
@@ -63,6 +75,7 @@ const handleAddWorkoutDay = () => {
       ">
       {{ day.name || "Unnamed" }}
     </button>
+
     <button
       class="p-4 border-r border-border flex gap-2 cursor-pointer sticky top-0 right-0 whitespace-nowrap flex-nowrap bg-background border-l"
       @click="handleAddWorkoutDay">
