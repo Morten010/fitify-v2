@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Input from "~/components/ui/input/Input.vue";
 import { useToast } from "@/components/ui/toast/use-toast";
+import { FetchError } from "ofetch";
 
 const user = ref({
   username: "",
@@ -11,22 +12,23 @@ const { toast } = useToast();
 
 const handleSubmit = async () => {
   try {
-    await $fetch("http://localhost:3001/signin", {
+    const res = await $fetch("/api/signin", {
       method: "POST",
       body: user.value,
       credentials: "include",
+      server: true,
     });
+    console.log(res);
+
     toast({
       title: "Successfully logged in",
     });
     setTimeout(() => {
       navigateTo({ path: "/" });
     }, 500);
-  } catch (error) {
-    console.log("err");
-
+  } catch (error: any) {
     toast({
-      title: "Wrong password or username",
+      title: error.data,
     });
   }
 };

@@ -55,7 +55,7 @@ const authRouter = new Elysia()
   )
   .post("/signout", ({ set }) => {
     deleteSessionTokenCookie(set);
-    return "signout";
+    return "Successfully signed out";
   })
   .post(
     "/signup",
