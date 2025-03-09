@@ -13,6 +13,21 @@ const workout = ref({
 const handleAddWorkoutDay = () => {
   workout.value.workoutDays.push({ name: "", exercises: [] });
 };
+
+const handleAddWorkout = async () => {
+  try {
+    console.log(workout.value);
+
+    const res = await $fetch("/api/workout", {
+      method: "post",
+      credentials: "include",
+      body: workout.value,
+    });
+    console.log("res", res);
+  } catch (error: any) {
+    console.log("err", err.data);
+  }
+};
 </script>
 
 <template>
@@ -33,7 +48,9 @@ const handleAddWorkoutDay = () => {
       </Button>
       <h1 class="title-font text-3xl mt-1">Create workout</h1>
     </div>
-    <Button variant="secondary" class="h-14 px-6"> Finish workout </Button>
+    <Button variant="secondary" class="h-14 px-6" @click="handleAddWorkout()">
+      Finish workout
+    </Button>
   </div>
   <!-- top navigation -->
 
