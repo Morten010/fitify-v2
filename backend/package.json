@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "db:push": "dotenv -e .env.local drizzle-kit push",
+    "db:generate": "dotenv -e .env.local drizzle-kit generate:mysql",
+    "db:introspect": "dotenv -e .env.local drizzle-kit introspect:",
+    "db:studio": "drizzle-kit studio --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.2",
+    "@oslojs/crypto": "^1.0.1",
+    "@oslojs/encoding": "^1.1.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.40.0",
+    "drizzle-typebox": "^0.3.0",
+    "elysia": "latest",
+    "mysql2": "^3.13.0"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "drizzle-kit": "^0.30.5",
+    "tsx": "^4.19.3"
+  },
+  "override": {
+    "@sinclair/typebox": "0.34.27"
+  },
+  "module": "src/index.js"
+}
