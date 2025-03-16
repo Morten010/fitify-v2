@@ -41,7 +41,10 @@ const handleDeleteExercise = (index: number) => {
           <CardTitle class="flex justify-between items-center">
             {{ exercise.name || "Exercise" }}
 
-            <Button variant="outline" size="icon">
+            <Button
+              variant="outline"
+              size="icon"
+              @click="handleDeleteExercise(index)">
               <Icon size="20" name="fluent:delete-48-regular" />
             </Button>
           </CardTitle>

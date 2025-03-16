@@ -2,6 +2,8 @@
 definePageMeta({
   layout: "normal",
 });
+
+const { data, error } = useFetch("/api/workout");
 </script>
 
 <template>
@@ -10,8 +12,14 @@ definePageMeta({
     <p class="text-white/80">Ready to get started?</p>
     <NuxtLink
       href="/workout/create"
-      class="aspect-[5/2] w-full flex justify-center items-center flex-col rounded-lg border-2 border-border border-dashed mt-5 text-border">
-      <Icon size="50" name="tabler:plus" />
+      class="aspect-[12/4] max-h-60 w-full flex justify-center items-center flex-col rounded-lg border-2 border-primary border-dashed mt-5 text-primary">
+      <Icon size="40" name="tabler:plus" />
     </NuxtLink>
+    <div v-if="data" v-for="workout in data">
+      {{ workout.name }}
+    </div>
+    <div v-if="error">
+      <p>Failed to fetch workouts</p>
+    </div>
   </div>
 </template>

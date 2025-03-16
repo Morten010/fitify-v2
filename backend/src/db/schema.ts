@@ -37,7 +37,7 @@ export const workoutTable = mysqlTable("workout", {
   description: varchar("description", { length: 256 }).notNull(),
   public: boolean("public").default(false).notNull(),
   isCopied: boolean("isCopied").default(false).notNull(),
-  userId: varchar("userId", { length: 255 }).notNull(),
+  userId: int("userId").notNull(),
 });
 
 export const workoutsRelations = relations(workoutTable, ({ one, many }) => ({
@@ -77,7 +77,7 @@ export const exerciseTable = mysqlTable("exercises", {
   name: varchar("name", { length: 255 }).notNull(),
   description: varchar("description", { length: 255 }),
   reps: int("reps").notNull(),
-  sets: varchar("sets", { length: 255 }).notNull(),
+  sets: int("sets").notNull(),
   video: varchar("video", { length: 255 }),
 });
 export const exercisesRelations = relations(exerciseTable, ({ one, many }) => ({

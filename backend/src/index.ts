@@ -1,6 +1,7 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { cors } from "@elysiajs/cors";
+import "dotenv/config";
 
 // routes
 import authRouter from "./routers/auth";
