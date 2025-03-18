@@ -10,9 +10,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   // Check if session have been revoked
   if (isLoggedIn) {
     try {
-      console.log("called");
-      console.log(authCookie.value);
-
       await $fetch("/api/authcheck", {
         credentials: "include",
         headers: useRequestHeaders(),
