@@ -1,23 +1,28 @@
-version: "3.9"
 services:
   backend:
     build: ./backend
     ports:
-      - "3001:3001" # Expose backend on port 3001
+      - "3032:3032" # Expose backend on port 3032
     environment:
-      - NODE_ENV=production
-    env_file:
-      - ./.env
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=${BACKEND_PORT}
     restart: unless-stopped
+    networks:
+      - fitify-network
 
   frontend:
     build: ./frontend
     ports:
-      - "3000:3000" # Expose frontend on port 3000
+      - "3031:3031" # Expose frontend on port 3031
     environment:
-      - NODE_ENV=production
-    env_file:
-      - ./.env
+      - API_URL=${API_URL}
+      - PORT=${FRONTEND_PORT}
     restart: unless-stopped
     depends_on:
       - backend
+    networks:
+      - fitify-network
+
+networks:
+  fitify-network:
+    driver: bridge

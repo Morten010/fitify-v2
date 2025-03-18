@@ -5,6 +5,7 @@ import { db } from "./db";
 import { eq, lt, or } from "drizzle-orm";
 import { sessionTable } from "./db/schema";
 import "dotenv/config";
+import { Logestic } from "logestic";
 
 // routes
 import authRouter from "./routers/auth";
@@ -17,9 +18,17 @@ const app = new Elysia()
       path: "/docs",
     })
   )
+  .use(Logestic.preset("fancy"))
   .use(
     cors({
-      origin: /^http:\/\/localhost(:\d+)?$/,
+      origin: [
+        "http://localhost",
+        "https://localhost",
+        "localhost",
+        "http://fitify.mortenra.com",
+        "https://fitify.mortenra.com",
+        "*.mortenra.com",
+      ],
     })
   )
   .use(

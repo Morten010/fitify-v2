@@ -1,7 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const proxyUrl = process.env.API_URL || "http://localhost:3001";
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
@@ -10,7 +8,7 @@ export default defineNuxtConfig({
     "~/components",
   ],
   runtimeConfig: {
-    proxyUrl: proxyUrl,
+    proxyUrl: process.env.API_URL,
   },
   shadcn: {
     /**
@@ -23,5 +21,10 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/icon"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "shadcn-nuxt",
+    "@nuxt/icon",
+    "nuxt-security",
+  ],
 });

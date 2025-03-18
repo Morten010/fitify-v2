@@ -20,12 +20,14 @@
     "drizzle-orm": "^0.40.0",
     "drizzle-typebox": "^0.3.0",
     "elysia": "latest",
+    "logestic": "^1.2.4",
     "mysql2": "^3.13.0"
   },
   "devDependencies": {
     "bun-types": "latest",
     "dotenv-cli": "^8.0.0",
     "drizzle-kit": "^0.30.5",
+    "pino-pretty": "^13.0.0",
     "tsx": "^4.19.3"
   },
   "override": {
