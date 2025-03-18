@@ -3,7 +3,7 @@ import { authMiddleware } from "../middleware";
 import { getUser } from "../helpers/auth";
 import { db } from "../db";
 import { exerciseTable, workoutDaysTable, workoutTable } from "../db/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 const apiRouter = new Elysia()
   .onBeforeHandle(authMiddleware)
@@ -85,6 +85,31 @@ const apiRouter = new Elysia()
 
     return await db.query.workoutTable.findMany({
       where: eq(workoutTable.userId, user?.id),
+    });
+  })
+  .get("/workout/:id", async ({ cookie, params: { id: workoutId } }) => {
+    const user = await getUser(cookie);
+
+    if (!user) {
+      return error(401, "Unauthorized Access: Token is missing");
+    }
+
+    return await db.query.workoutTable.findFirst({
+      where: and(
+        eq(workoutTable.userId, user?.id),
+        eq(workoutTable.id, parseInt(workoutId))
+      ),
+      with: {
+        days: {
+          with: {
+            exercises: {
+              with: {
+                weights: true,
+              },
+            },
+          },
+        },
+      },
     });
   });
 

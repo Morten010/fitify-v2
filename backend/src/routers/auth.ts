@@ -1,7 +1,11 @@
 import Elysia, { error, t } from "elysia";
 import { db } from "../db";
 import { userTable } from "../db/schema";
-import { createSession, generateSessionToken } from "../helpers/auth";
+import {
+  createSession,
+  generateSessionToken,
+  validateSessionToken,
+} from "../helpers/auth";
 import {
   deleteSessionTokenCookie,
   setSessionTokenCookie,
@@ -117,6 +121,23 @@ const authRouter = new Elysia()
         }),
       }),
     }
-  );
+  )
+  .get("/authcheck", async (ctx) => {
+    const sessionCookie = ctx.cookie["session"];
+
+    if (!sessionCookie.value) {
+      deleteSessionTokenCookie(ctx.set);
+      return error(401, "Unauthorized Access: Token is missing");
+    }
+
+    const { session, user } = await validateSessionToken(sessionCookie.value);
+
+    if (!session || !user) {
+      deleteSessionTokenCookie(ctx.set);
+      return error(401, "Unauthorized Access: Token is missing");
+    }
+
+    return "Session token still alive";
+  });
 
 export default authRouter;

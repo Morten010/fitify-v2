@@ -1,4 +1,4 @@
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
   const authCookie = useCookie("session");
   const isLoggedIn = !!authCookie.value;
   const loggedOutPaths = ["/signin", "/signup"];
@@ -7,7 +7,21 @@ export default defineNuxtRouteMiddleware((to, from) => {
     return navigateTo("/signin", { replace: true });
   }
 
-  // TODO check backend endpoint to authenticate token if is present
+  // Check if session have been revoked
+  if (isLoggedIn) {
+    try {
+      console.log("called");
+      console.log(authCookie.value);
+
+      await $fetch("/api/authcheck", {
+        credentials: "include",
+        headers: useRequestHeaders(),
+      });
+    } catch (_err) {
+      authCookie.value = null;
+      return navigateTo("/signin", { replace: true });
+    }
+  }
 
   if (isLoggedIn && loggedOutPaths.includes(to.path)) {
     return navigateTo("/", { replace: true });

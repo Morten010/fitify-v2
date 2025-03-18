@@ -1,11 +1,15 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { cors } from "@elysiajs/cors";
+import { db } from "./db";
+import { eq, lt, or } from "drizzle-orm";
+import { sessionTable } from "./db/schema";
 import "dotenv/config";
 
 // routes
 import authRouter from "./routers/auth";
 import apiRouter from "./routers/api";
+import cron from "@elysiajs/cron";
 
 const app = new Elysia()
   .use(
@@ -16,6 +20,21 @@ const app = new Elysia()
   .use(
     cors({
       origin: /^http:\/\/localhost(:\d+)?$/,
+    })
+  )
+  .use(
+    cron({
+      name: "delete old sessions",
+      pattern: "0 0 * * *",
+      async run() {
+        const sessions = await db.query.sessionTable.findMany({
+          where: lt(sessionTable.expiresAt, new Date()),
+        });
+        const deleteIds = sessions.map((session) =>
+          eq(sessionTable.id, session.id)
+        );
+        await db.delete(sessionTable).where(or(...deleteIds));
+      },
     })
   )
 
