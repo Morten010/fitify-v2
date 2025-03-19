@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const proxyUrl = process.env.API_URL || "http://localhost:3001";
+const proxyUrl = process.env.API_URL || "http://localhost:3032";
 
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",

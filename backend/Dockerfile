@@ -30,4 +30,4 @@ ENV NODE_ENV=production
 CMD ["./server"]
 
 # Expose the required port
-EXPOSE 3001
+EXPOSE 3032
