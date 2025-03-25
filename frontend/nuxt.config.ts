@@ -21,6 +21,19 @@ export default defineNuxtConfig({
      */
     componentDir: "./components/ui",
   },
+  security: {
+    corsHandler: {
+      origin: "*", // Allows all origins
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      allowHeaders: ["Content-Type", "Authorization"],
+      exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
+      credentials: true,
+      maxAge: "86400", // 24 hours
+      preflight: {
+        statusCode: 204,
+      },
+    },
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
