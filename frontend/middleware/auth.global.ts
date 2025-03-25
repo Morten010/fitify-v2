@@ -2,6 +2,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const authCookie = useCookie("session");
   const isLoggedIn = !!authCookie.value;
   const loggedOutPaths = ["/signin", "/signup"];
+  console.log(isLoggedIn);
+  console.log(loggedOutPaths.includes(to.path));
 
   if (!isLoggedIn && !loggedOutPaths.includes(to.path)) {
     return navigateTo("/signin", { replace: true });

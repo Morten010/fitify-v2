@@ -22,8 +22,8 @@ const app = new Elysia()
   .use(
     cors({
       origin: [
-        "http://localhost",
-        "https://localhost",
+        "http://localhost:3031",
+        "https://localhost:3031",
         "localhost",
         "http://fitify.mortenra.com",
         "https://fitify.mortenra.com",
